@@ -1,16 +1,21 @@
-name: CI - Vérification HTML
+name: CI
+
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-jobs:
-  test-html:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Récupération du code
-        uses: actions/checkout@v3
 
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: Linux
+
+    steps:
+      - name: Récuperation du code
+        uses: actions/checkout@v4
+ 
       - name: Vérification syntaxe HTML
         uses: Cyb3r-Jak3/html5validator-action@v0.6
         with:
